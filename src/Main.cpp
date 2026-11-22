@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Main.h"
+#include "Stopwatch.h"
 
 int main(){
     std::cout << "WELCOME TO PASTA COOKER" << std::endl;
