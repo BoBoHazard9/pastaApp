@@ -2,21 +2,71 @@
 #include "Main.h"
 #include "Stopwatch.h"
 
+int ChooseGroup(){
+    int group;
+
+    std::cout << "Choose the pasta:" << std::endl;
+    std::cout << "1. Long pasta       2. Short pasta" << std::endl;
+    std::cin >> group;
+
+    std::cout << std::endl;
+
+    switch (group){
+    case 1:
+        Long();
+        break;
+    case 2:
+        Short();
+        break;
+
+    default:
+        std::cout << "Invalid option";
+        break;
+    }
+
+}
+
+int Long(){
+    int subgroup;
+
+    std::cout << "Choose the long pasta:" << std::endl;
+    std::cout << "1. Spagetti no2       2. Spagetti no5" << std::endl;
+    std::cin >> subgroup;
+
+    return subgroup;
+}
+
+int Short(){
+    int subgroup;
+
+    std::cout << "Choose the short pasta:" << std::endl;
+    std::cout << "1. Penne       2. Fusilli" << std::endl;
+    std::cin >> subgroup;
+
+    return subgroup;
+}
+
 int CalculatePortions (int people){
     return people * 100;
 }
 
-int CookingTime (int baseTime, int preference){
+int CookingTime (int baseTime){
 
-    int newBase;
+    int preference;
+
+    std::cout << "Do you want it al dente or little overcooked" << std::endl;
+    std::cout << "1. Al dente         2. Normal         3. Overcooked" << std::endl;
+    std::cin >> preference;
 
     if(preference == 1){
-        newBase = baseTime - 1;
+        baseTime -= 1;
     }else if(preference == 3){
-        newBase = baseTime + 1;
+        baseTime += 1;
     }
 
-    return newBase;
+    std::cout << "We are cooking your Spagetti no2 for " << baseTime << " minutes - novo" << std::endl;
+
+    return baseTime;
 }
 
 int main(){
@@ -51,13 +101,10 @@ int main(){
             std::cin >> people;
 
             std::cout << "You have to make " << CalculatePortions(people)<< " g of pasta" << std::endl;
-           
-            std::cout << "Do you want it al dente or little overcooked" << std::endl;
-            std::cout << "1. Al dente         2. Normal         3. Overcooked" << std::endl;
-            std::cin >> preference;
 
-            std::cout << "We are cooking your Spagetti no2 for " << CookingTime(spagootsNo2, preference) << " minutes." << std::endl;
-        }
+            CookingTime(spagootsNo2);
+
+            }
         else if (subChoice == 2)
         {
             std::cout << "Great, we are starting with cooking Spagetti no 5!" << std::endl;
