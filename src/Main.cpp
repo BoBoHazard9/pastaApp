@@ -2,6 +2,23 @@
 #include "Main.h"
 #include "Stopwatch.h"
 
+int CalculatePortions (int people){
+    return people * 100;
+}
+
+int CookingTime (int baseTime, int preference){
+
+    int newBase;
+
+    if(preference == 1){
+        newBase = baseTime - 1;
+    }else if(preference == 3){
+        newBase = baseTime + 1;
+    }
+
+    return newBase;
+}
+
 int main(){
     std::cout << "WELCOME TO PASTA COOKER" << std::endl;
     std::cout << std::endl;
@@ -13,9 +30,9 @@ int main(){
     int spagootsNo5 = 8;
     int penne = 6;
     int fusilli = 6;
-    int userInput;
+    int preference;
     int people;
-    int onePersonPortion = 100;
+
 
     std::cout << "Choose the pasta:" << std::endl;
     std::cout << "1. Long pasta       2. Short pasta" << std::endl;
@@ -33,22 +50,13 @@ int main(){
             std::cout << "How many people will eat pasta?" << std::endl;
             std::cin >> people;
 
-            std::cout << "You have to make " << people * onePersonPortion << " grams of pasta" << std::endl;
+            std::cout << "You have to make " << CalculatePortions(people)<< " g of pasta" << std::endl;
            
             std::cout << "Do you want it al dente or little overcooked" << std::endl;
             std::cout << "1. Al dente         2. Normal         3. Overcooked" << std::endl;
-            std::cin >> userInput;
-            
+            std::cin >> preference;
 
-            if(userInput == 1){
-                std::cout << "We are cooking your Spagetti no2 for " << alDente_overcooked - spagootsNo2 << " minutes." << std::endl;
-            }
-            else if (userInput == 3)
-            {
-                std::cout << "We are cooking your Spagetti no2 for " << alDente_overcooked + spagootsNo2 << " minutes."<< std::endl;
-            }else{
-                std::cout << "We are cooking your spagetti no2 for " << spagootsNo2 << " minutes" << std::endl;
-            }
+            std::cout << "We are cooking your Spagetti no2 for " << CookingTime(spagootsNo2, preference) << " minutes." << std::endl;
         }
         else if (subChoice == 2)
         {
@@ -57,9 +65,9 @@ int main(){
             
             std::cout << "Do you want it al dente or little overcooked" << std::endl;
             std::cout << "1. Al dente         2. Normal         3. Overcooked" << std::endl;
-            std::cin >> userInput;
+            std::cin >> preference;
 
-            if(userInput == 1){
+            if(preference== 1){
                 std::cout << "We are cooking your Spagetti no2 for " << alDente_overcooked + spagootsNo5 << " minutes." << std::endl;
             }
         }
